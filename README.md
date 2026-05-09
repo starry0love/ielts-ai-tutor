@@ -16,6 +16,8 @@
 
 开源版不内置 API Key、不内置练习内容、不内置学习数据；第一次打开时会先引导用户连接自己的 OpenAI-compatible 大模型接口。
 
+只要模型服务支持 OpenAI Chat Completions 兼容协议，通常就可以直接填写接口地址、模型名称和 API Key 使用，不需要为每个服务商单独适配。
+
 ## 适合谁
 
 - 想备考 IELTS，但每天不知道该学什么的人
@@ -94,6 +96,8 @@ python -m venv .venv
 
 可以复制 `.env.example` 为 `.env`，也可以第一次打开应用后在界面里填写。
 
+需要填写的只有通用连接信息：接口地址、模型名称、API Key。只要你的模型服务兼容 OpenAI Chat Completions 协议，一般就可以使用。
+
 ```text
 AI_PROVIDER=openai-compatible
 AI_API_KEY=your_api_key_here
@@ -139,14 +143,6 @@ apps\desktop\dist-electron
 ```
 
 注意：打包产物不会内置 `.env` 或任何 API Key。用户第一次启动后需要填写自己的大模型连接信息。
-
-## 路线图
-
-- [x] 补充真实运行截图
-- [x] 发布 Windows 便携版 Release
-- [ ] 增加更多模型服务商配置示例
-- [ ] 增加导出学习报告功能
-- [ ] 增加多语言 README
 
 ## 隐私
 

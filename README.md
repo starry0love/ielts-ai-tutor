@@ -42,7 +42,9 @@
 
 ## 界面预览
 
-当前开源仓库先提供项目封面图。后续 Release 会补充真实运行截图和便携版下载文件。
+开源版第一次打开会先引导用户连接自己的大模型接口，不会内置作者的 API Key。
+
+![连接大模型界面](docs/assets/screenshot-ai-setup.png)
 
 ## 文档导航
 
@@ -140,8 +142,8 @@ apps\desktop\dist-electron
 
 ## 路线图
 
-- [ ] 补充真实运行截图
-- [ ] 发布 Windows 便携版 Release
+- [x] 补充真实运行截图
+- [x] 发布 Windows 便携版 Release
 - [ ] 增加更多模型服务商配置示例
 - [ ] 增加导出学习报告功能
 - [ ] 增加多语言 README

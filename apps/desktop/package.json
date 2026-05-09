@@ -1,7 +1,7 @@
 {
   "name": "ielts-ai-tutor-desktop",
   "version": "0.1.0",
-  "description": "Local IELTS AI tutor desktop app with user-provided AI API",
+  "description": "雅思 AI 私教：本地运行的 IELTS 学习导师，使用用户自己的大模型接口。",
   "author": "Starry",
   "private": false,
   "type": "module",
@@ -17,7 +17,7 @@
   },
   "build": {
     "appId": "com.starry.ieltsaitutor",
-    "productName": "IELTS AI Tutor",
+    "productName": "雅思 AI 私教",
     "npmRebuild": false,
     "directories": {
       "output": "dist-electron"

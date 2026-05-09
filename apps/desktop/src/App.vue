@@ -2,8 +2,8 @@
   <div class="min-h-screen bg-slate-50 text-slate-900">
     <aside class="fixed inset-y-0 left-0 w-64 border-r border-slate-200 bg-white px-5 py-6">
       <p class="text-sm text-slate-500">IELTS AI Tutor</p>
-      <h1 class="mt-2 text-2xl font-semibold">AI 学习导师</h1>
-      <p class="mt-2 text-sm leading-6 text-slate-500">先理解你，再安排每天怎么学。</p>
+      <h1 class="mt-2 text-2xl font-semibold">雅思 AI 私教</h1>
+      <p class="mt-2 text-sm leading-6 text-slate-500">每天制定计划、批改写作、复盘进步。</p>
       <nav class="mt-7 space-y-1">
         <button
           v-for="item in navItems"

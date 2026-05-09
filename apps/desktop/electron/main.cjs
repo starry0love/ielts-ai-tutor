@@ -186,7 +186,7 @@ async function createWindow() {
         </head>
         <body>
           <main>
-            <h1>IELTS AI Tutor</h1>
+            <h1>雅思 AI 私教</h1>
             <p>正在启动本地学习服务...</p>
           </main>
         </body>

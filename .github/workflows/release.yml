@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  windows-portable:
+    name: Build Windows portable app
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: apps/desktop/package-lock.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install desktop dependencies
+        working-directory: apps/desktop
+        run: npm ci
+
+      - name: Package portable app
+        shell: pwsh
+        run: powershell -ExecutionPolicy Bypass -File .\scripts\package-exe.ps1
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: 雅思 AI 私教 ${{ github.ref_name }}
+          body: |
+            这个版本提供本地运行的 IELTS AI 学习导师。
+
+            - 用户自行连接 OpenAI-compatible 大模型接口
+            - 支持入门画像、今日计划、写作批改、每日复盘、学习进度、周/月报
+            - 不内置 API Key
+            - 不内置第三方教材、音频、PDF、OCR 文本或练习内容
+            - 学习数据默认保存在本机 SQLite 数据库
+
+            下载 Windows 便携版后运行，第一次打开按界面引导填写自己的大模型接口信息。
+          files: apps/desktop/dist-electron/*.exe

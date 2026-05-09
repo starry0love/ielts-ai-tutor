@@ -1,0 +1,28 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">雅思 AI 私教项目封面</title>
+  <desc id="desc">本地运行的 IELTS AI 学习导师，帮助用户制定计划、批改写作、复盘进步。</desc>
+  <rect width="1200" height="630" fill="#F8FAFC"/>
+  <rect x="72" y="68" width="1056" height="494" rx="28" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+  <rect x="72" y="68" width="1056" height="92" rx="28" fill="#0F172A"/>
+  <rect x="72" y="132" width="1056" height="28" fill="#0F172A"/>
+  <circle cx="116" cy="114" r="10" fill="#EF4444"/>
+  <circle cx="148" cy="114" r="10" fill="#F59E0B"/>
+  <circle cx="180" cy="114" r="10" fill="#10B981"/>
+  <text x="224" y="122" fill="#E2E8F0" font-family="Microsoft YaHei, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">IELTS AI Tutor</text>
+  <text x="114" y="238" fill="#0F172A" font-family="Microsoft YaHei, Segoe UI, Arial, sans-serif" font-size="58" font-weight="800">雅思 AI 私教</text>
+  <text x="114" y="296" fill="#334155" font-family="Microsoft YaHei, Segoe UI, Arial, sans-serif" font-size="28" font-weight="600">每天帮你制定计划、批改写作、复盘进步</text>
+  <text x="114" y="352" fill="#64748B" font-family="Microsoft YaHei, Segoe UI, Arial, sans-serif" font-size="22">本地运行 · 自带大模型接口 · 不内置题库与 API Key</text>
+  <rect x="114" y="408" width="170" height="54" rx="12" fill="#059669"/>
+  <text x="150" y="442" fill="#FFFFFF" font-family="Microsoft YaHei, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">今日计划</text>
+  <rect x="304" y="408" width="170" height="54" rx="12" fill="#EFF6FF" stroke="#BFDBFE"/>
+  <text x="340" y="442" fill="#1D4ED8" font-family="Microsoft YaHei, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">写作批改</text>
+  <rect x="494" y="408" width="170" height="54" rx="12" fill="#F0FDF4" stroke="#BBF7D0"/>
+  <text x="530" y="442" fill="#047857" font-family="Microsoft YaHei, Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">每日复盘</text>
+  <rect x="720" y="218" width="330" height="244" rx="20" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="752" y="264" fill="#0F172A" font-family="Microsoft YaHei, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700">导师反馈</text>
+  <rect x="752" y="292" width="248" height="14" rx="7" fill="#CBD5E1"/>
+  <rect x="752" y="326" width="196" height="14" rx="7" fill="#CBD5E1"/>
+  <rect x="752" y="360" width="222" height="14" rx="7" fill="#CBD5E1"/>
+  <rect x="752" y="404" width="120" height="34" rx="8" fill="#DCFCE7"/>
+  <text x="776" y="427" fill="#047857" font-family="Microsoft YaHei, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">Band 预估</text>
+</svg>

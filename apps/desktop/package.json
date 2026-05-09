@@ -4,6 +4,14 @@
   "description": "雅思 AI 私教：本地运行的 IELTS 学习导师，使用用户自己的大模型接口。",
   "author": "Starry",
   "private": false,
+  "homepage": "https://github.com/zx17872762620-blip/ielts-ai-tutor#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zx17872762620-blip/ielts-ai-tutor.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zx17872762620-blip/ielts-ai-tutor/issues"
+  },
   "type": "module",
   "main": "electron/main.cjs",
   "scripts": {

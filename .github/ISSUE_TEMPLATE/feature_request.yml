@@ -1,0 +1,32 @@
+name: 功能建议
+description: 提出新的功能、文档或体验改进建议
+title: "[Feature] "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你想解决什么问题？
+      description: 请描述当前使用中不方便的地方。
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你希望怎么改？
+      description: 可以写界面、流程、文档或技术实现建议。
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: 主要影响范围
+      options:
+        - 今日计划
+        - 写作批改
+        - 每日复盘
+        - 大模型配置
+        - 打包发布
+        - 文档
+        - 其他
+

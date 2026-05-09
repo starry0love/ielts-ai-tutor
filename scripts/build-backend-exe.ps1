@@ -8,8 +8,7 @@ $pythonCandidates = @(
   ".\.packaging-venv\Scripts\python.exe",
   ".\.venv\Scripts\python.exe",
   "python",
-  "py",
-  "C:\Users\Starry\Documents\Codex\2026-05-06\codex-claude-code-claude-md-codex\codex-python312\tools\python.exe"
+  "py"
 )
 
 $python = $null

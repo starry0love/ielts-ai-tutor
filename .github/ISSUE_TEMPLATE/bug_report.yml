@@ -1,0 +1,35 @@
+name: 问题反馈
+description: 报告启动、配置、计划生成、写作批改或打包问题
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: 发生了什么？
+      description: 请描述你遇到的问题，以及你原本期待发生什么。
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: 如何复现？
+      description: 请按步骤写出来，方便定位。
+      placeholder: |
+        1. 打开应用
+        2. 填写大模型接口
+        3. 点击测试连接
+        4. 出现问题
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: 系统环境
+      placeholder: Windows 11 / Node.js 版本 / Python 版本
+  - type: textarea
+    id: logs
+    attributes:
+      label: 错误信息或截图
+      description: 不要粘贴 API Key、个人作文全文或隐私学习记录。
+

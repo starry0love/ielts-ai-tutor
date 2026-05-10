@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/zx17872762620-blip/ielts-ai-tutor/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/zx17872762620-blip/ielts-ai-tutor/actions/workflows/ci.yml/badge.svg"></a>
-  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/zx17872762620-blip/ielts-ai-tutor"></a>
+  <a href="https://github.com/starry0love/ielts-ai-tutor/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/starry0love/ielts-ai-tutor/actions/workflows/ci.yml/badge.svg"></a>
+  <a href="LICENSE"><img alt="License" src="https://img.shields.io/github/license/starry0love/ielts-ai-tutor"></a>
   <img alt="Platform" src="https://img.shields.io/badge/platform-Windows-2563eb">
   <img alt="AI" src="https://img.shields.io/badge/AI-OpenAI--compatible-10b981">
   <img alt="Local first" src="https://img.shields.io/badge/data-local--first-0f172a">
@@ -147,7 +147,8 @@ apps\desktop\dist-electron
 ## 隐私
 
 - 学习数据默认保存在本机 SQLite 数据库。
-- API Key 默认只保存在用户本机配置中。
+- API Key 默认明文保存在用户本机 `.env` 配置文件中，不会随仓库或打包产物发布。
+- 不要公开分享 `.env`、SQLite 数据库、截图中的 API Key 或打包后的个人配置目录。
 - 项目不包含云端账号系统。
 - 使用第三方大模型时，作文、复盘和学习画像会发送给用户配置的模型服务商。
 

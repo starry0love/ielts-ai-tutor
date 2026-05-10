@@ -1,10 +1,12 @@
 ﻿from __future__ import annotations
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 
 from app.db import init_db
 from app.routes import mentor, plans, profile, progress, reports, reviews, tasks, writing
+from app.services.ai_client import AIUnavailableError
 
 
 app = FastAPI(title="IELTS AI Tutor API")
@@ -26,6 +28,11 @@ def on_startup() -> None:
 @app.get("/api/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
+
+
+@app.exception_handler(AIUnavailableError)
+def handle_ai_unavailable(_: Request, exc: AIUnavailableError) -> JSONResponse:
+    return JSONResponse(status_code=400, content={"detail": str(exc)})
 
 
 app.include_router(profile.router, prefix="/api/profile", tags=["profile"])

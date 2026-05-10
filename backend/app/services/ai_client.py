@@ -109,7 +109,17 @@ def request_json(system_prompt: str, user_payload: dict[str, Any]) -> dict[str, 
     if not content:
         raise AIUnavailableError("OpenAI returned an empty response.")
 
-    return json.loads(content)
+    try:
+        parsed = json.loads(content)
+    except json.JSONDecodeError as exc:
+        preview = content.strip().replace("\n", " ")[:200]
+        raise AIUnavailableError(
+            "AI returned invalid JSON. Please check whether the configured model supports "
+            f"OpenAI-compatible JSON responses. Response preview: {preview}"
+        ) from exc
+    if not isinstance(parsed, dict):
+        raise AIUnavailableError("AI returned JSON, but it was not an object.")
+    return parsed
 
 
 def load_env() -> None:

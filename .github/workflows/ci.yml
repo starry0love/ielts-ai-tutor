@@ -42,3 +42,6 @@ jobs:
 
       - name: Check backend modules
         run: python -m compileall -q backend\app backend\smoke_test.py backend\integration_test.py
+
+      - name: Run backend smoke test
+        run: python backend\smoke_test.py

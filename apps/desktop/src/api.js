@@ -23,8 +23,12 @@ async function request(path, options = {}) {
     error.status = response.status;
     try {
       error.body = await response.text();
+      const parsed = JSON.parse(error.body);
+      if (parsed?.detail) {
+        error.message = typeof parsed.detail === "string" ? parsed.detail : JSON.stringify(parsed.detail);
+      }
     } catch {
-      error.body = "";
+      error.body = error.body || "";
     }
     throw error;
   }

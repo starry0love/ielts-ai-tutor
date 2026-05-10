@@ -4,8 +4,11 @@ import json
 from datetime import date, timedelta
 from sqlite3 import Connection
 
+from pydantic import ValidationError
+
 from app.db import DIMENSIONS
-from app.services.ai_client import load_prompt, request_json
+from app.schemas import DailyPlanAIOutput, PlanDiscussionAIOutput
+from app.services.ai_client import AIUnavailableError, load_prompt, request_json
 
 
 MODULE_LABELS = {
@@ -65,7 +68,11 @@ def create_ai_plan(connection: Connection, user_feedback: str | None = None, rep
         },
     }
 
-    ai_plan = request_json(load_prompt("mentor_daily_plan.md"), payload)
+    raw_plan = request_json(load_prompt("mentor_daily_plan.md"), payload)
+    try:
+        ai_plan = DailyPlanAIOutput.model_validate(raw_plan).model_dump()
+    except ValidationError as exc:
+        raise AIUnavailableError(f"AI daily plan did not match the expected structure: {exc}") from exc
 
     focus_summary = str(ai_plan.get("focus_summary") or "今天围绕一个核心目标、一个支撑能力和一次具体复盘来学习。")
     ai_reason = str(ai_plan.get("ai_reason") or "根据入门画像、近期复盘、写作反馈和后台画像生成。")
@@ -105,7 +112,7 @@ def create_plan_discussion(connection: Connection) -> dict:
                 "needs_onboarding": True,
             },
         }
-    discussion = request_json(
+    raw_discussion = request_json(
         load_prompt("mentor_plan_discussion.md"),
         {
             **context,
@@ -118,6 +125,10 @@ def create_plan_discussion(connection: Connection) -> dict:
             "language": "所有解释性内容必须使用简体中文。",
         },
     )
+    try:
+        discussion = PlanDiscussionAIOutput.model_validate(raw_discussion).model_dump()
+    except ValidationError as exc:
+        raise AIUnavailableError(f"AI plan discussion did not match the expected structure: {exc}") from exc
     discussion["needs_onboarding"] = False
     return {"context": context, "discussion": discussion}
 

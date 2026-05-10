@@ -1,6 +1,9 @@
 from __future__ import annotations
 
-from app.services.ai_client import load_prompt, request_json
+from pydantic import ValidationError
+
+from app.schemas import WritingReviewAIOutput
+from app.services.ai_client import AIUnavailableError, load_prompt, request_json
 
 
 def review_writing_with_ai(task_type: str, prompt: str, essay_text: str) -> dict:
@@ -12,4 +15,8 @@ def review_writing_with_ai(task_type: str, prompt: str, essay_text: str) -> dict
         "essay_text": essay_text,
     }
 
-    return request_json(system_prompt, payload)
+    raw = request_json(system_prompt, payload)
+    try:
+        return WritingReviewAIOutput.model_validate(raw).model_dump()
+    except ValidationError as exc:
+        raise AIUnavailableError(f"AI writing feedback did not match the expected structure: {exc}") from exc

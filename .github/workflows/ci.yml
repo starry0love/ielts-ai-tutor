@@ -31,6 +31,10 @@ jobs:
           node --check apps\desktop\src\api.js
           node --check apps\desktop\electron\main.cjs
 
+      - name: Build desktop frontend
+        working-directory: apps/desktop
+        run: npm run build
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:

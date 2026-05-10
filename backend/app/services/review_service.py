@@ -3,7 +3,10 @@
 import json
 from sqlite3 import Connection
 
-from app.services.ai_client import load_prompt, request_json
+from pydantic import ValidationError
+
+from app.schemas import DailyReviewAIOutput
+from app.services.ai_client import AIUnavailableError, load_prompt, request_json
 
 
 def summarize_daily_review(connection: Connection, review_payload: dict) -> dict:
@@ -62,7 +65,11 @@ def summarize_daily_review(connection: Connection, review_payload: dict) -> dict
         "language": "所有解释性内容必须使用简体中文。",
     }
 
-    return request_json(load_prompt("mentor_daily_review.md"), payload)
+    raw = request_json(load_prompt("mentor_daily_review.md"), payload)
+    try:
+        return DailyReviewAIOutput.model_validate(raw).model_dump()
+    except ValidationError as exc:
+        raise AIUnavailableError(f"AI daily review did not match the expected structure: {exc}") from exc
 
 
 def rows_to_dicts(rows) -> list[dict]:

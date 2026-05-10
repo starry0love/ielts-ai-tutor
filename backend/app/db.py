@@ -172,8 +172,15 @@ def init_db() -> None:
                 created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
                 updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
             );
+
+            CREATE TABLE IF NOT EXISTS schema_migrations (
+                version INTEGER PRIMARY KEY,
+                description TEXT NOT NULL,
+                applied_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+            );
             """
         )
+        record_schema_migration(connection, 1, "Initial open-source schema")
         ensure_user_columns(connection)
         seed_default_user(connection)
         migrate_existing_onboarding_notes(connection)
@@ -315,6 +322,16 @@ def ensure_column(connection: sqlite3.Connection, table: str, column: str, defin
     columns = connection.execute(f"PRAGMA table_info({table})").fetchall()
     if column not in {row["name"] for row in columns}:
         connection.execute(f"ALTER TABLE {table} ADD COLUMN {column} {definition}")
+
+
+def record_schema_migration(connection: sqlite3.Connection, version: int, description: str) -> None:
+    connection.execute(
+        """
+        INSERT OR IGNORE INTO schema_migrations (version, description)
+        VALUES (?, ?)
+        """,
+        (version, description),
+    )
 
 
 def remove_legacy_writing_prompts(connection: sqlite3.Connection) -> None:
